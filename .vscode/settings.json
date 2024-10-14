@@ -1,0 +1,9 @@
+{
+    "explorer.experimental.fileNesting.enabled": true,
+    "explorer.experimental.fileNesting.expend": false,
+    "explorer.experimental.fileNesting.patterns": {
+        "pubspec.yaml": {
+            ".packages, .metadata, pugspec.lock, analysis_options.yaml": "pubspec.yaml"
+        },
+    }
+}

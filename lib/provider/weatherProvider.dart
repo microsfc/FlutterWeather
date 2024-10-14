@@ -1,20 +1,19 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_weather/models/additionalWeatherData.dart';
-import 'package:flutter_weather/models/geocode.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
-import 'package:latlong2/latlong.dart';
-
+import '../models/weather.dart';
 import '../models/dailyWeather.dart';
 import '../models/hourlyWeather.dart';
-import '../models/weather.dart';
+import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:http/http.dart' as http;
+import 'package:geolocator/geolocator.dart';
+import 'package:flutter_weather/models/geocode.dart';
+
+
 
 class WeatherProvider with ChangeNotifier {
-  String apiKey = 'Enter Your API Key';
+  String apiKey = 'a3154ce741c7137a147548b72eb243b1';
   late Weather weather;
-  late AdditionalWeatherData additionalWeatherData;
+  // late AdditionalWeatherData additionalWeatherData;
   LatLng? currentLocation;
   List<HourlyWeather> hourlyWeather = [];
   List<DailyWeather> dailyWeather = [];
@@ -85,7 +84,7 @@ class WeatherProvider with ChangeNotifier {
     try {
       currentLocation = LatLng(locData.latitude, locData.longitude);
       await getCurrentWeather(currentLocation!);
-      await getDailyWeather(currentLocation!);
+      //await getDailyWeather(currentLocation!);
     } catch (e) {
       print(e);
       isRequestError = true;
@@ -116,12 +115,13 @@ class WeatherProvider with ChangeNotifier {
     notifyListeners();
 
     Uri dailyUrl = Uri.parse(
-      'https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,current&appid=$apiKey',
+      'https://api.openweathermap.org/data/2.5/forecast/daily?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,current&appid=$apiKey',
     );
+    // api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
     try {
       final response = await http.get(dailyUrl);
       final dailyData = json.decode(response.body) as Map<String, dynamic>;
-      additionalWeatherData = AdditionalWeatherData.fromJson(dailyData);
+      // additionalWeatherData = AdditionalWeatherData.fromJson(dailyData);
       List dailyList = dailyData['daily'];
       List hourlyList = dailyData['hourly'];
       hourlyWeather = hourlyList
@@ -164,7 +164,7 @@ class WeatherProvider with ChangeNotifier {
       geocodeData = await locationToLatLng(location);
       if (geocodeData == null) throw Exception('Unable to Find Location');
       await getCurrentWeather(geocodeData.latLng);
-      await getDailyWeather(geocodeData.latLng);
+      //await getDailyWeather(geocodeData.latLng);
       // replace location name with data from geocode
       // because data from certain lat long might return local area name
       weather.city = geocodeData.name;

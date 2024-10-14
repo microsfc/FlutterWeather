@@ -1,15 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-import 'package:flutter_weather/helper/extensions.dart';
-import 'package:flutter_weather/theme/textStyle.dart';
-import 'package:flutter_weather/widgets/customShimmer.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:provider/provider.dart';
-
-import 'package:flutter_weather/provider/weatherProvider.dart';
-import 'package:flutter_weather/theme/colors.dart';
-
 import '../helper/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_weather/theme/colors.dart';
+import 'package:flutter_weather/theme/textStyle.dart';
+import 'package:flutter_weather/helper/extensions.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:flutter_weather/widgets/customShimmer.dart';
+import 'package:flutter_weather/provider/weatherProvider.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
+
 
 class MainWeatherDetail extends StatelessWidget {
   @override
@@ -50,31 +50,31 @@ class MainWeatherDetail extends StatelessWidget {
                       endIndent: 4.0,
                       color: backgroundBlue,
                     ),
-                    DetailInfoTile(
-                      icon: PhosphorIcon(
-                        PhosphorIconsRegular.drop,
-                        color: Colors.white,
-                      ),
-                      title: 'Precipitation',
-                      data:
-                          '${weatherProv.additionalWeatherData.precipitation}%',
-                    ),
+                    // DetailInfoTile(
+                    //   icon: PhosphorIcon(
+                    //     PhosphorIconsRegular.drop,
+                    //     color: Colors.white,
+                    //   ),
+                    //   title: 'Precipitation',
+                    //   data:
+                    //       '${weatherProv.additionalWeatherData.precipitation}%',
+                    // ),
                     VerticalDivider(
                       thickness: 1.0,
                       indent: 4.0,
                       endIndent: 4.0,
                       color: backgroundBlue,
                     ),
-                    DetailInfoTile(
-                      icon: PhosphorIcon(
-                        PhosphorIconsRegular.sun,
-                        color: Colors.white,
-                      ),
-                      title: 'UV Index',
-                      data: uviValueToString(
-                        weatherProv.additionalWeatherData.uvi,
-                      ),
-                    ),
+                    // DetailInfoTile(
+                    //   icon: PhosphorIcon(
+                    //     PhosphorIconsRegular.sun,
+                    //     color: Colors.white,
+                    //   ),
+                    //   title: 'UV Index',
+                    //   data: uviValueToString(
+                    //     weatherProv.additionalWeatherData.uvi,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -116,14 +116,14 @@ class MainWeatherDetail extends StatelessWidget {
                       endIndent: 4.0,
                       color: backgroundBlue,
                     ),
-                    DetailInfoTile(
-                      icon: PhosphorIcon(
-                        PhosphorIconsRegular.cloud,
-                        color: Colors.white,
-                      ),
-                      title: 'Cloudiness',
-                      data: '${weatherProv.additionalWeatherData.clouds}%',
-                    ),
+                    // DetailInfoTile(
+                    //   icon: PhosphorIcon(
+                    //     PhosphorIconsRegular.cloud,
+                    //     color: Colors.white,
+                    //   ),
+                    //   title: 'Cloudiness',
+                    //   data: '${weatherProv.additionalWeatherData.clouds}%',
+                    // ),
                   ],
                 ),
               ),
